@@ -93,7 +93,11 @@ public class EmployeePayrollController {
 	
 	@DeleteMapping("/delete/{empId}")
 	public ResponseEntity<ResponseDTO> deleteEmployeePayrollData(@PathVariable ("empId") int empId){
+<<<<<<< HEAD
 >>>>>>> UC2
+=======
+		employeePayrollService.deleteEmployeePayrollData(empId);
+>>>>>>> UC3
 		ResponseDTO respDTO=new ResponseDTO("Deleted Sucessfully","Deleted Id: "+empId);
 		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
 	}
