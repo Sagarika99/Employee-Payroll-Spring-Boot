@@ -1,12 +1,13 @@
 package com.bridgelabz.employeepayroll.services;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.bridgelabz.employeepayroll.dto.EmployeePayrollDTO;
+import com.bridgelabz.employeepayroll.exceptions.EmployeePayrollException;
 import com.bridgelabz.employeepayroll.model.EmployeePayrollData;
 
 @Service
@@ -23,9 +24,9 @@ public class EmployeePayrollService implements IEmployeePayrollService{
 
 	@Override
 	public EmployeePayrollData getEmployeePayrollData(int empId) {
-//		EmployeePayrollData employeePayrollData=null;
-//		employeePayrollData=new EmployeePayrollData(1,new EmployeePayrollDTO("Pankaj",3000));
-		return employeePayrollList.get(empId-1);
+		return employeePayrollList.stream().filter(contactData->contactData.getEmployeeId()==empId)
+		.findFirst()
+		.orElseThrow(()->new EmployeePayrollException("contact not found"));
 	}
 
 	@Override
