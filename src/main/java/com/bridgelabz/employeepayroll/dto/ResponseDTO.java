@@ -11,9 +11,4 @@ public @Data class ResponseDTO {
 		this.message = message;
 		this.data = data;
 	}
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> UC1.1
 }
