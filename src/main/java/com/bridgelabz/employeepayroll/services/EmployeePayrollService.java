@@ -28,6 +28,11 @@ public class EmployeePayrollService implements IEmployeePayrollService{
 		return empRepository.findById(empId)
 		.orElseThrow(()->new EmployeePayrollException("Employee with employeeId "+empId+" does not exits!!"));
 	}
+	
+	@Override
+	public List<EmployeePayrollData> getEmployeesByDepartment(String department) {
+		return empRepository.findEmployeesByDepartment(department);
+	}
 
 	@Override
 	public EmployeePayrollData addEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
@@ -49,6 +54,5 @@ public class EmployeePayrollService implements IEmployeePayrollService{
 		EmployeePayrollData empData=this.getEmployeePayrollData(empId);
 		empRepository.delete(empData);	
 	}
-
 	
 }
